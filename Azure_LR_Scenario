@@ -1,0 +1,25 @@
+# Starter pipeline
+ 
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+ 
+trigger: none
+ 
+pool:
+  name: Default
+ 
+steps:
+- checkout: none
+- task: PowerShell@2
+  inputs:
+    targetType: inline
+    script: echo $pwd.path
+- task: ExecuteLoadRunnerProfessional@0
+  displayName: 'Run a multi-line script'
+  inputs:
+    SourcePath: 'C:\Temp\Scenario1.lrs'
+    ResultsDirectory: 'C:\Temp\DevOps_Results'
+    TaskTimeout: 
+    ControllerPollingInterval: 300
+    ScenarioExecutionTimeout: 10
